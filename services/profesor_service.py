@@ -26,17 +26,8 @@ class ProfesorService(BaseService):
             conn = self.db.get_connection()
             cursor = conn.cursor()
             
-            # SQL Server permite parámetros de salida
-            cursor.execute("""
-                DECLARE @ProfesorId INT;
-                EXEC sp_CrearProfesor ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @ProfesorId OUTPUT;
-                SELECT @ProfesorId AS Id;
-            """, params)
-            
-            # Obtener el ID generado
-            row = cursor.fetchone()
-            profesor_id = row.Id if row else None
-            
+            profesor_id = self.db.execute_stored_procedure("sp_CrearProfesor", params)
+
             conn.commit()
             conn.close()
             

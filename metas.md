@@ -95,13 +95,13 @@
 
 - ✅ `DatabaseManager` - Gestor de conexiones a la base de datos
 - ✅ `Logger` - Sistema de registro de actividades
-- 🔲 `Validator` - Validador de datos
-- 🔲 `ConfigManager` - Gestor de configuración
-- 🔲 `SecurityManager` - Gestor de seguridad (hash de contraseñas, etc.)
+- ✅ `Validator` - Validador de datos
+- ✅ `ConfigManager` - Gestor de configuración
+- ✅ `SecurityManager` - Gestor de seguridad (hash de contraseñas, etc.)
 
 ## Métodos Adicionales por Implementar
 
-### 1. En AlumnoService
+### 1. En AlumnoService ✅✅
 
 - `inscribir_carrera(alumno_id, carrera_id)` - Inscribir alumno a una carrera
 - `inscribir_asignatura(alumno_id, asignatura_id, año_academico, cuatrimestre)` - Inscribir alumno a una asignatura
@@ -121,7 +121,7 @@
 - `asignar_a_plan(asignatura_id, plan_id, año, cuatrimestre)` - Asignar asignatura a un plan de estudios
 - `obtener_estadisticas(asignatura_id, año_academico, cuatrimestre)` - Obtener estadísticas de una asignatura
 
-### 4. En UsuarioService
+### 4. En UsuarioService ✅✅
 
 - `autenticar(username, password)` - Autenticar un usuario
 - `cambiar_password(usuario_id, password_actual, nueva_password)` - Cambiar contraseña

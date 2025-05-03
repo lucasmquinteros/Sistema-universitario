@@ -477,7 +477,7 @@ BEGIN
 END
 
 -- Crear Usuario
-CREATE PROCEDURE sp_CrearUsuario
+CREATE PROCEDURE sp_CrearUsuario --REVISAR
     @Username NVARCHAR(50),
     @Password NVARCHAR(256), -- Hash de la contraseña
     @Email NVARCHAR(128),
@@ -633,3 +633,84 @@ BEGIN
     ORDER BY 
         A.Apellido, A.Nombre;
 END
+
+
+
+CREATE PROCEDURE InsertarAlumno(
+    IN pNombre VARCHAR(255),
+    IN pApellido VARCHAR(255),
+    IN pDNI VARCHAR(255),
+    IN pFechaNacimiento DATE,
+    IN pEmail VARCHAR(255),
+    IN pTelefono VARCHAR(255),
+    IN pDireccion VARCHAR(255),
+    IN pFechaIngreso DATE,
+    IN pEstado VARCHAR(255)
+)
+BEGIN
+    IF EXISTS (SELECT 1 FROM Alumno WHERE DNI = pDNI) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Ya existe un alumno con ese DNI.';
+    ELSE
+        INSERT INTO Alumno (
+            Nombre,
+            Apellido,
+            DNI,
+            FechaNacimiento,
+            Email,
+            Telefono,
+            Direccion,
+            FechaIngreso,
+            Estado
+        )
+        VALUES (
+            pNombre,
+            pApellido,
+            pDNI,
+            pFechaNacimiento,
+            pEmail,
+            pTelefono,
+            pDireccion,
+            pFechaIngreso,
+            pEstado
+        );
+    END IF;
+END //
+
+DELIMITER //
+
+CREATE PROCEDURE InsertarInscripcionExamen(
+    IN pIdAlumno INTEGER,
+    IN pIdExamenFinal INTEGER,
+    IN pEstado VARCHAR(255),
+    IN pCalificacion DECIMAL(10,2),
+    IN pObservaciones TEXT
+)
+BEGIN
+    -- Validar que el alumno exista
+    IF NOT EXISTS (SELECT 1 FROM Alumno WHERE Id = pIdAlumno) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El alumno no existe.';
+    
+    -- Validar que el examen final exista
+    ELSEIF NOT EXISTS (SELECT 1 FROM ExamenFinal WHERE Id = pIdExamenFinal) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El examen final no existe.';
+    
+    ELSE
+        INSERT INTO InscripcionExamen (
+            Id_Alumno,
+            Id_ExamenFinal,
+            Estado,
+            Calificacion,
+            Observaciones
+        )
+        VALUES (
+            pIdAlumno,
+            pIdExamenFinal,
+            pEstado,
+            pCalificacion,
+            pObservaciones
+        );
+    END IF;
+END 

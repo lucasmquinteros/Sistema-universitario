@@ -1,5 +1,5 @@
 from typing import Dict, List, Any, Optional
-from ..db.manager import DatabaseManager
+from db.manager import DatabaseManager
 
 class BaseService:
     """Clase base para todos los servicios que interactúan con la base de datos"""

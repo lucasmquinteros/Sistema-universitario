@@ -1,5 +1,7 @@
 from typing import Dict, List, Any, Optional
 from datetime import datetime
+from models.alumno import Alumno
+from models.usuario import Usuario
 
 class AlumnoService:
     def __init__(self, db_manager):
@@ -100,11 +102,94 @@ class AlumnoService:
             print(f"Error al modificar alumno: {str(e)}")
             return False
     
-    def _crear_usuario_alumno(self, alumno_id: int, datos: Dict[str, Any]) -> bool:
-        """Método auxiliar para crear usuario asociado a un alumno"""
+    def listarAlumnos(self, filtros: Dict[str, Any]) -> List[Dict[Alumno, Any]]:
+        """Lista alumnos aplicando filtros usando stored procedure"""
         try:
-            # Aquí podrías llamar a otro SP para crear el usuario
-            # O usar la clase UsuarioService
+            # Preparar parámetros para el SP
+            params = (
+                filtros.get('Carrera_id'),
+                filtros.get('PlanEstudioId'),
+                filtros.get('CursadaId'),
+                filtros.get('Estado'),
+                filtros.get('Legajo')
+            )
+            
+            # Ejecutar SP
+            resultados = self.db.execute_stored_procedure("sp_ListarAlumnos", params)
+            
+            return [dict(row) for row in resultados] if resultados else []
+            
+        except Exception as e:
+            print(f"Error al listar alumnos: {str(e)}")
+            return []
+        
+    def eliminar(self, alumno_id: int, Dni: str) -> bool:
+        """Elimina un alumno usando stored procedure"""
+        try:
+            # Ejecutar SP
+            self.db.execute_stored_procedure("sp_EliminarAlumno", (alumno_id, Dni))
             return True
-        except Exception:
+            
+        except Exception as e:
+            print(f"Error al eliminar alumno: {str(e)}")
+            return False
+        
+    def inscribirAlumnoEnCarrera(self, alumno_id: int, carrera_id: int) -> bool:
+        """Inscribe un alumno en una carrera usando stored procedure"""
+        try:
+            # Ejecutar SP
+            self.db.execute_stored_procedure("sp_InscribirAlumnoCarrera", (alumno_id, carrera_id))
+            return True
+            
+        except Exception as e:
+            print(f"Error al inscribir alumno en carrera: {str(e)}")
+            return False
+    
+    def inscribirAlumnoEnAsignatura(self, alumno_id: int, asignatura_id: int) -> bool:
+        """Inscribe un alumno en una asignatura usando stored procedure"""
+        try:
+            # Ejecutar SP
+            self.db.execute_stored_procedure("sp_InscribirAlumnoAsignatura", (alumno_id, asignatura_id))
+            return True
+            
+        except Exception as e:
+            print(f"Error al inscribir alumno en asignatura: {str(e)}")
+            return False
+        
+    def registrarNota(self, alumno_id: int, asignatura_id: int, nota: float) -> bool:
+        """Registra una nota para un alumno en una asignatura usando stored procedure"""
+        try:
+            # Ejecutar SP
+            self.db.execute_stored_procedure("sp_RegistrarNota", (alumno_id, asignatura_id, nota))
+            return True
+            
+        except Exception as e:
+            print(f"Error al registrar nota: {str(e)}")
+            return False
+        
+    def obtenerHistorialAcademico(self, alumno_id: int) -> Optional[List[Dict[str, Any]]]:
+        """Obtiene el historial académico de un alumno usando stored procedure"""
+        try:
+            # Ejecutar SP
+            resultados = self.db.execute_stored_procedure("sp_ObtenerHistorialAcademico", (alumno_id,))
+            
+            return [dict(row) for row in resultados] if resultados else []
+            
+        except Exception as e:
+            print(f"Error al obtener historial académico: {str(e)}")
+            return None
+        
+    def verificarCorrelativas(self, alumno_id: int, asignatura_id: int) -> bool:
+        """Verifica si un alumno cumple con las correlativas de una asignatura usando stored procedure"""
+        try:
+            # Ejecutar SP
+            resultados = self.db.execute_stored_procedure("sp_VerificarCorrelativas", (alumno_id, asignatura_id))
+            
+            if resultados and len(resultados) > 0:
+                return resultados[0][0] == 1  # Retorna True si cumple con las correlativas
+            
+            return False
+            
+        except Exception as e:
+            print(f"Error al verificar correlativas: {str(e)}")
             return False
