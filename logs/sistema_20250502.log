@@ -1,0 +1,43 @@
+2025-05-02 10:42:53,207 - sistema_universitario - INFO - Aplicación iniciada
+2025-05-02 10:42:53,207 - sistema_universitario - WARNING - Advertencia: conexión lenta
+2025-05-02 10:42:53,207 - sistema_universitario - ERROR - Error en la operación: division by zero
+Traceback (most recent call last):
+  File "C:\Users\lucas\sistema_universitario\utils\unitTest.py", line 120, in ejemplo_logger
+    resultado = 10 / 0
+                ~~~^~~
+ZeroDivisionError: division by zero
+2025-05-02 10:42:53,219 - sistema_universitario - INFO - DB_OPERATION: CREATE - Alumno - ID: 123 - User: 1 - Details: Creación de alumno
+2025-05-02 14:14:56,618 - sistema_universitario - INFO - Aplicación iniciada
+2025-05-02 14:14:56,618 - sistema_universitario - WARNING - Advertencia: conexión lenta
+2025-05-02 14:14:56,618 - sistema_universitario - ERROR - Error en la operación: division by zero
+Traceback (most recent call last):
+  File "C:\Users\lucas\sistema_universitario\utils\unitTest.py", line 120, in ejemplo_logger
+    resultado = 10 / 0
+                ~~~^~~
+ZeroDivisionError: division by zero
+2025-05-02 14:14:56,631 - sistema_universitario - INFO - DB_OPERATION: CREATE - Alumno - ID: 123 - User: 1 - Details: Creación de alumno
+2025-05-02 14:38:06,257 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-02 14:38:06,257 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-02 14:38:06,318 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-02 14:38:06,334 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-02 14:38:06,334 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-02 14:38:41,030 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-02 14:38:41,030 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-02 14:38:41,111 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-02 14:38:41,119 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-02 14:38:41,119 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-02 14:47:13,485 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-02 14:47:13,485 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-02 14:47:13,551 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-02 14:47:13,560 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-02 14:47:13,560 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-02 14:50:28,648 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-02 14:50:28,648 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-02 14:50:28,709 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-02 14:50:28,714 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-02 14:50:28,714 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-02 14:50:41,156 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-02 14:50:41,156 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-02 14:50:41,203 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-02 14:50:41,205 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-02 14:50:41,205 - sistema_universitario - INFO - Finalizando aplicación

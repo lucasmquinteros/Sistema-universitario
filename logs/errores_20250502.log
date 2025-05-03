@@ -1,0 +1,12 @@
+2025-05-02 10:42:53,207 - sistema_universitario - ERROR - Error en la operación: division by zero
+Traceback (most recent call last):
+  File "C:\Users\lucas\sistema_universitario\utils\unitTest.py", line 120, in ejemplo_logger
+    resultado = 10 / 0
+                ~~~^~~
+ZeroDivisionError: division by zero
+2025-05-02 14:14:56,618 - sistema_universitario - ERROR - Error en la operación: division by zero
+Traceback (most recent call last):
+  File "C:\Users\lucas\sistema_universitario\utils\unitTest.py", line 120, in ejemplo_logger
+    resultado = 10 / 0
+                ~~~^~~
+ZeroDivisionError: division by zero

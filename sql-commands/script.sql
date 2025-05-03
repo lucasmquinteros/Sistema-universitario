@@ -1,13 +1,13 @@
 -- Crear tabla Institucion
 CREATE TABLE Institucion (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Nombre VARCHAR(128) NOT NULL,
     Direccion VARCHAR(128) NOT NULL
 );
 
 -- Crear tabla Carrera
 CREATE TABLE Carrera (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Nombre VARCHAR(128) NOT NULL
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE InstitucionxCarrera (
 
 -- Crear tabla Departamento
 CREATE TABLE Departamento (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Nombre VARCHAR(128) NOT NULL,
     Integrantes VARCHAR(128) NOT NULL,
     Id_carrera INTEGER NOT NULL,
@@ -31,19 +31,19 @@ CREATE TABLE Departamento (
 
 -- Crear tabla Regimen
 CREATE TABLE Regimen (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Nombre VARCHAR(128) NOT NULL
 );
 
 -- Crear tabla Area
 CREATE TABLE Area (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Nombre VARCHAR(128) NOT NULL
 );
 
 -- Crear tabla PlanEstudio
 CREATE TABLE PlanEstudio (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Año DATETIME NOT NULL,
     Nombre VARCHAR(128) NOT NULL,
     AñoFin DATETIME,  -- Puede ser NULL
@@ -53,7 +53,7 @@ CREATE TABLE PlanEstudio (
 
 -- Crear tabla Cuatrimestre
 CREATE TABLE Cuatrimestre (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Id_plan INTEGER NOT NULL,
     Nro INTEGER NOT NULL,
     FOREIGN KEY (Id_plan) REFERENCES PlanEstudio(Id)
@@ -61,7 +61,7 @@ CREATE TABLE Cuatrimestre (
 
 -- Crear tabla Asignatura
 CREATE TABLE Asignatura (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Hsemanal INTEGER NOT NULL,
     Nombre VARCHAR(128) NOT NULL,
     Htotales INTEGER NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE Correlativa (
 
 -- Crear tabla Alumno
 CREATE TABLE Alumno (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Nombre VARCHAR(128) NOT NULL,
     Apellido VARCHAR(128) NOT NULL,
     DNI VARCHAR(20) NOT NULL UNIQUE,
@@ -127,7 +127,7 @@ CREATE TABLE AlumnoxCarrera (
 
 -- Crear tabla Profesor
 CREATE TABLE Profesor (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Nombre VARCHAR(128) NOT NULL,
     Apellido VARCHAR(128) NOT NULL,
     DNI VARCHAR(20) NOT NULL UNIQUE,
@@ -155,7 +155,7 @@ CREATE TABLE ProfesorxAsignatura (
 
 -- Crear tabla Cursada (inscripción de alumnos a asignaturas)
 CREATE TABLE Cursada (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Id_Alumno INTEGER NOT NULL,
     Id_Asignatura INTEGER NOT NULL,
     Id_Plan INTEGER NOT NULL,
@@ -171,7 +171,7 @@ CREATE TABLE Cursada (
 
 -- Crear tabla ExamenFinal
 CREATE TABLE ExamenFinal (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Fecha DATE NOT NULL,
     Id_Asignatura INTEGER NOT NULL,
     Id_Profesor INTEGER NOT NULL, -- Profesor que preside la mesa
@@ -182,7 +182,7 @@ CREATE TABLE ExamenFinal (
 
 -- Crear tabla InscripcionExamen (relación entre alumnos y exámenes finales)
 CREATE TABLE InscripcionExamen (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Id_Alumno INTEGER NOT NULL,
     Id_ExamenFinal INTEGER NOT NULL,
     Estado VARCHAR(20) NOT NULL DEFAULT 'Inscripto', -- Inscripto, Presente, Ausente
@@ -278,7 +278,7 @@ END
 
 -- Tabla de Usuarios (sistema de autenticación)
 CREATE TABLE Usuario (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Username VARCHAR(50) NOT NULL UNIQUE,
     PasswordHash VARCHAR(255) NOT NULL, -- Almacenar siempre hash, nunca contraseñas en texto plano
     Email VARCHAR(128) NOT NULL UNIQUE,
@@ -288,12 +288,12 @@ CREATE TABLE Usuario (
     IntentosFallidos INTEGER NOT NULL DEFAULT 0,
     TokenRecuperacion VARCHAR(255),
     ExpiracionToken DATETIME,
-    RequiereCambioPassword BOOLEAN NOT NULL DEFAULT 0
+    RequiereCambioPassword BIT NOT NULL DEFAULT 0
 );
 
 -- Tabla de Roles
 CREATE TABLE Rol (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Nombre VARCHAR(50) NOT NULL UNIQUE,
     Descripcion VARCHAR(255),
     NivelAcceso INTEGER NOT NULL -- Útil para jerarquía de roles (1: bajo, 100: alto)
@@ -301,7 +301,7 @@ CREATE TABLE Rol (
 
 -- Tabla de Permisos
 CREATE TABLE Permiso (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Codigo VARCHAR(50) NOT NULL UNIQUE, -- Ej: "CREAR_CURSO", "VER_NOTAS"
     Nombre VARCHAR(100) NOT NULL,
     Descripcion VARCHAR(255),
@@ -331,7 +331,7 @@ CREATE TABLE UsuarioRol (
 
 -- Tabla para vincular usuarios con entidades del sistema
 CREATE TABLE UsuarioEntidad (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Id_Usuario INTEGER NOT NULL,
     TipoEntidad VARCHAR(50) NOT NULL, -- "Alumno", "Profesor", "Administrativo", etc.
     Id_Entidad INTEGER NOT NULL, -- ID en la tabla correspondiente (Alumno, Profesor, etc.)
@@ -341,7 +341,7 @@ CREATE TABLE UsuarioEntidad (
 
 -- Tabla para registro de actividad (auditoría)
 CREATE TABLE LogActividad (
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Id INTEGER PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Id_Usuario INTEGER NOT NULL,
     FechaHora DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     Accion VARCHAR(100) NOT NULL,
@@ -401,213 +401,3 @@ WHERE Codigo IN ('CARGAR_NOTAS', 'CREAR_EXAMEN', 'VER_ALUMNOS');
 INSERT INTO RolPermiso (Id_Rol, Id_Permiso)
 SELECT 4, Id FROM Permiso 
 WHERE Codigo IN ('VER_NOTAS', 'INSCRIBIR_MATERIA', 'INSCRIBIR_EXAMEN');
-
-CREATE PROCEDURE sp_AutenticarUsuario
-    @Username NVARCHAR(50),
-    @PasswordHash NVARCHAR(255)
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Verificar credenciales
-    DECLARE @UserId INT;
-    DECLARE @Estado NVARCHAR(20);
-    
-    SELECT @UserId = Id, @Estado = Estado
-    FROM Usuario
-    WHERE Username = @Username AND PasswordHash = @PasswordHash;
-    
-    IF @UserId IS NULL
-    BEGIN
-        -- Usuario no encontrado o contraseña incorrecta
-        RETURN -1;
-    END
-    
-    IF @Estado <> 'Activo'
-    BEGIN
-        -- Usuario no activo
-        RETURN -2;
-    END
-    
-    -- Actualizar último acceso
-    UPDATE Usuario 
-    SET UltimoAcceso = GETDATE(), IntentosFallidos = 0
-    WHERE Id = @UserId;
-    
-    -- Devolver información del usuario
-    SELECT Id, Username, Email, Estado
-    FROM Usuario
-    WHERE Id = @UserId;
-    
-    -- Devolver roles del usuario
-    SELECT r.Id, r.Nombre, r.NivelAcceso
-    FROM Rol r
-    JOIN UsuarioRol ur ON r.Id = ur.Id_Rol
-    WHERE ur.Id_Usuario = @UserId;
-    
-    -- Devolver entidades vinculadas
-    SELECT TipoEntidad, Id_Entidad
-    FROM UsuarioEntidad
-    WHERE Id_Usuario = @UserId;
-    
-    -- Devolver permisos del usuario
-    SELECT DISTINCT p.Id, p.Codigo, p.Nombre, p.Modulo
-    FROM Permiso p
-    JOIN RolPermiso rp ON p.Id = rp.Id_Permiso
-    JOIN UsuarioRol ur ON rp.Id_Rol = ur.Id_Rol
-    WHERE ur.Id_Usuario = @UserId;
-    
-    RETURN 0; -- Éxito
-END
-
--- Crear Alumno
-CREATE PROCEDURE sp_CrearAlumno
-    @Nombre NVARCHAR(128),
-    @Apellido NVARCHAR(128),
-    @DNI NVARCHAR(20),
-    @FechaNacimiento DATE,
-    @Email NVARCHAR(128),
-    @Telefono NVARCHAR(20) = NULL,
-    @Direccion NVARCHAR(255) = NULL,
-    @FechaIngreso DATE = NULL,
-    @CarreraId INT = NULL,
-    @AlumnoId INT OUTPUT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Validar que el DNI no exista
-    IF EXISTS (SELECT 1 FROM Alumno WHERE DNI = @DNI)
-    BEGIN
-        RAISERROR('Ya existe un alumno con ese DNI', 16, 1);
-        RETURN -1;
-    END
-    
-    -- Establecer fecha de ingreso si no se proporciona
-    IF @FechaIngreso IS NULL
-        SET @FechaIngreso = GETDATE();
-    
-    BEGIN TRANSACTION;
-    
-    BEGIN TRY
-        -- Insertar alumno
-        INSERT INTO Alumno (Nombre, Apellido, DNI, FechaNacimiento, Email, 
-                           Telefono, Direccion, FechaIngreso, Estado)
-        VALUES (@Nombre, @Apellido, @DNI, @FechaNacimiento, @Email,
-               @Telefono, @Direccion, @FechaIngreso, 'Activo');
-        
-        -- Obtener ID generado
-        SET @AlumnoId = SCOPE_IDENTITY();
-        
-        -- Si se proporciona carrera, inscribir al alumno
-        IF @CarreraId IS NOT NULL
-        BEGIN
-            INSERT INTO AlumnoxCarrera (Id_Alumno, Id_Carrera, FechaInscripcion)
-            VALUES (@AlumnoId, @CarreraId, GETDATE());
-        END
-        
-        COMMIT TRANSACTION;
-        RETURN 0; -- Éxito
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        THROW; -- Re-lanzar la excepción
-        RETURN ERROR_NUMBER();
-    END CATCH
-END
-
--- Obtener Alumno
-CREATE PROCEDURE sp_ObtenerAlumno
-    @AlumnoId INT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Datos básicos del alumno
-    SELECT * FROM Alumno WHERE Id = @AlumnoId;
-    
-    -- Carreras del alumno
-    SELECT c.Id, c.Nombre, ac.FechaInscripcion
-    FROM Carrera c
-    JOIN AlumnoxCarrera ac ON c.Id = ac.Id_Carrera
-    WHERE ac.Id_Alumno = @AlumnoId;
-    
-    -- Cursadas actuales
-    SELECT a.Id, a.Nombre, c.Estado, c.NotaFinal
-    FROM Asignatura a
-    JOIN Cursada c ON a.Id = c.Id_Asignatura
-    WHERE c.Id_Alumno = @AlumnoId AND c.Estado = 'Cursando';
-    
-    -- Usuario asociado
-    SELECT u.Id, u.Username, u.Email
-    FROM Usuario u
-    JOIN UsuarioEntidad ue ON u.Id = ue.Id_Usuario
-    WHERE ue.TipoEntidad = 'Alumno' AND ue.Id_Entidad = @AlumnoId;
-    
-    RETURN 0;
-END
-
--- Modificar Alumno
-CREATE PROCEDURE sp_ModificarAlumno
-    @AlumnoId INT,
-    @Nombre NVARCHAR(128) = NULL,
-    @Apellido NVARCHAR(128) = NULL,
-    @Email NVARCHAR(128) = NULL,
-    @Telefono NVARCHAR(20) = NULL,
-    @Direccion NVARCHAR(255) = NULL,
-    @Estado NVARCHAR(20) = NULL
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Verificar que el alumno existe
-    IF NOT EXISTS (SELECT 1 FROM Alumno WHERE Id = @AlumnoId)
-    BEGIN
-        RAISERROR('El alumno no existe', 16, 1);
-        RETURN -1;
-    END
-    
-    BEGIN TRANSACTION;
-    
-    BEGIN TRY
-        -- Actualizar solo los campos proporcionados
-        UPDATE Alumno
-        SET 
-            Nombre = ISNULL(@Nombre, Nombre),
-            Apellido = ISNULL(@Apellido, Apellido),
-            Email = ISNULL(@Email, Email),
-            Telefono = ISNULL(@Telefono, Telefono),
-            Direccion = ISNULL(@Direccion, Direccion),
-            Estado = ISNULL(@Estado, Estado)
-        WHERE Id = @AlumnoId;
-        
-        -- Si se actualizó el email, actualizar también en Usuario si existe
-        IF @Email IS NOT NULL
-        BEGIN
-            UPDATE u
-            SET u.Email = @Email
-            FROM Usuario u
-            JOIN UsuarioEntidad ue ON u.Id = ue.Id_Usuario
-            WHERE ue.TipoEntidad = 'Alumno' AND ue.Id_Entidad = @AlumnoId;
-        END
-        
-        -- Si se cambió el estado a inactivo, actualizar usuario
-        IF @Estado = 'Inactivo'
-        BEGIN
-            UPDATE u
-            SET u.Estado = 'Inactivo'
-            FROM Usuario u
-            JOIN UsuarioEntidad ue ON u.Id = ue.Id_Usuario
-            WHERE ue.TipoEntidad = 'Alumno' AND ue.Id_Entidad = @AlumnoId;
-        END
-        
-        COMMIT TRANSACTION;
-        RETURN 0; -- Éxito
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        THROW;
-        RETURN ERROR_NUMBER();
-    END CATCH
-END
-
