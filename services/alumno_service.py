@@ -2,6 +2,7 @@ from typing import Dict, List, Any, Optional
 from datetime import datetime
 from models.alumno import Alumno
 from models.usuario import Usuario
+from db.manager import DatabaseManager
 
 class AlumnoService:
     def __init__(self, db_manager):
@@ -28,12 +29,7 @@ class AlumnoService:
             cursor = conn.cursor()
             
             # SQL Server permite parámetros de salida
-            cursor.execute("""
-                DECLARE @AlumnoId INT;
-                EXEC sp_CrearAlumno ?, ?, ?, ?, ?, ?, ?, ?, ?, @AlumnoId OUTPUT;
-                SELECT @AlumnoId AS Id;
-            """, params)
-            
+            cursor = self.db.execute_stored_procedure("sp_CrearAlumno", params, output=True)
             # Obtener el ID generado
             row = cursor.fetchone()
             alumno_id = row.Id if row else None

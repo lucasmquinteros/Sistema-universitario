@@ -18,23 +18,24 @@ def main():
         # Crear servicio
         profesor_service = ProfesorService(db_manager)
 
-        # Crear un profesor
-        datos_profesor = {
-            'nombre': 'Juan',
-            'apellido': 'Pérez',
-            'dni': '12345678',
-            'email': 'juan.perez@universidad.edu',
-            'telefono': '555-1234',
-            'titulo': 'Doctor en Informática',
-            'especialidad': 'Inteligencia Artificial',
-            'tipo_contrato': 'Titular',
-            'id_departamento': 1  # ID del departamento de Informática
-        }
+        ## Crear un profesor
+        #datos_profesor = {
+        #    'nombre': 'Juan',
+        #    'apellido': 'Pérez',
+        #    'dni': '12345678',
+        #    'email': 'juan.perez@universidad.edu',
+        #    'telefono': '555-1234',
+        #    'titulo': 'Doctor en Informática',
+        #    'especialidad': 'Inteligencia Artificial',
+        #    'tipo_contrato': 'Titular',
+        #    'id_departamento': 1  # ID del departamento de Informática
+        #}
 
-        profesor_id = profesor_service.crear(datos_profesor)
-        logger.info(f"Profesor creado con ID: {profesor_id}")
+        #profesor_id = profesor_service.crear(datos_profesor)
+        #logger.info(f"Profesor creado con ID: {profesor_id}")
 
         # Obtener un profesor
+        profesor_id = 10 
         profesor = profesor_service.obtener(profesor_id)
         if profesor:
             logger.info(f"Profesor recuperado: {profesor.nombre_completo}")
@@ -42,7 +43,7 @@ def main():
             # Asignar a una asignatura
             resultado = profesor_service.asignar_asignatura(
                 profesor_id, 
-                asignatura_id=5,
+                asignatura_id=3,
                 rol="Titular", 
                 año_academico=2023, 
                 cuatrimestre=1

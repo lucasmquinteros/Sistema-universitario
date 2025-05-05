@@ -247,9 +247,15 @@ BEGIN
         RETURN ERROR_NUMBER();
     END CATCH
 END
+USE [sistema_universitario2]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_CrearProfesor]    Script Date: 3/5/2025 11:52:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 
--- Crear Profesor
-CREATE PROCEDURE sp_CrearProfesor
+ALTER PROCEDURE [dbo].[sp_CrearProfesor]
     @Nombre NVARCHAR(128),
     @Apellido NVARCHAR(128),
     @DNI NVARCHAR(20),
@@ -259,8 +265,7 @@ CREATE PROCEDURE sp_CrearProfesor
     @Especialidad NVARCHAR(128) = NULL,
     @TipoContrato NVARCHAR(50),
     @FechaIngreso DATE = NULL,
-    @Id_Departamento INT,
-    @ProfesorId INT OUTPUT
+    @Id_Departamento INT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -269,7 +274,7 @@ BEGIN
     IF EXISTS (SELECT 1 FROM Profesor WHERE DNI = @DNI)
     BEGIN
         RAISERROR('Ya existe un profesor con ese DNI', 16, 1);
-        RETURN -1;
+        RETURN;
     END
     
     -- Establecer fecha de ingreso si no se proporciona
@@ -285,16 +290,14 @@ BEGIN
         VALUES (@Nombre, @Apellido, @DNI, @Email, @Telefono,
                @Titulo, @Especialidad, @TipoContrato, @FechaIngreso, @Id_Departamento);
         
-        -- Obtener ID generado
-        SET @ProfesorId = SCOPE_IDENTITY();
+        -- Devolver ID generado directamente
+        SELECT SCOPE_IDENTITY() AS ProfesorId;
         
         COMMIT TRANSACTION;
-        RETURN 0; -- Éxito
     END TRY
     BEGIN CATCH
         ROLLBACK TRANSACTION;
-        THROW; -- Re-lanzar la excepción
-        RETURN ERROR_NUMBER();
+        THROW;
     END CATCH
 END
 

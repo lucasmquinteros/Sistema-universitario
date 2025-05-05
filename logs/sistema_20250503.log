@@ -1,0 +1,44 @@
+2025-05-03 11:50:30,422 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-03 11:50:30,422 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-03 11:50:30,536 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-03 11:50:30,543 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-03 11:50:30,543 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-03 11:57:33,645 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-03 11:57:33,645 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-03 11:57:33,711 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-03 11:57:33,715 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-03 11:57:33,715 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-03 12:00:26,979 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-03 12:00:26,979 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-03 12:00:27,031 - sistema_universitario - INFO - Profesor creado con ID: [{'ProfesorId': Decimal('10')}]
+2025-05-03 12:00:27,087 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID [{'ProfesorId': Decimal('10')}]
+2025-05-03 12:00:27,087 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-03 12:07:52,362 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-03 12:07:52,362 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-03 12:07:52,431 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-03 12:07:52,441 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-03 12:07:52,441 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-03 12:10:09,224 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-03 12:10:09,224 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-03 12:10:09,225 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-03 12:10:09,285 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID None
+2025-05-03 12:10:09,285 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-03 12:11:22,120 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-03 12:11:22,120 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-03 12:11:22,185 - sistema_universitario - INFO - Profesor recuperado:  
+2025-05-03 12:11:22,193 - sistema_universitario - WARNING - No se pudo asignar el profesor a la asignatura
+2025-05-03 12:11:22,193 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-03 12:16:29,384 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-03 12:16:29,385 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-03 12:16:29,444 - sistema_universitario - INFO - Profesor recuperado:  
+2025-05-03 12:16:29,451 - sistema_universitario - WARNING - No se pudo asignar el profesor a la asignatura
+2025-05-03 12:16:29,451 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-03 19:01:14,914 - sistema_universitario - INFO - Aplicación iniciada
+2025-05-03 19:01:14,914 - sistema_universitario - WARNING - Advertencia: conexión lenta
+2025-05-03 19:01:14,914 - sistema_universitario - ERROR - Error en la operación: division by zero
+Traceback (most recent call last):
+  File "C:\Users\lucas\sistema_universitario\utils\unitTest.py", line 120, in ejemplo_logger
+    resultado = 10 / 0
+                ~~~^~~
+ZeroDivisionError: division by zero
+2025-05-03 19:01:14,928 - sistema_universitario - INFO - DB_OPERATION: CREATE - Alumno - ID: 123 - User: 1 - Details: Creación de alumno
