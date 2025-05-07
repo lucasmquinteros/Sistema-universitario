@@ -5,31 +5,38 @@
 - ✅ `sp_CrearAlumno` - Crear un nuevo alumno
 - ✅ `sp_ModificarAlumno` - Actualizar datos de un alumno
 - ✅ `sp_EliminarAlumno` - Eliminar un alumno (baja lógica)
-- 🔲 `sp_InscribirAlumnoCarrera` - Inscribir alumno a una carrera
-- 🔲 `sp_ObtenerCursadasAlumno` - Obtener materias que cursa un alumno
+- ✅ `sp_InscribirAlumnoCarrera` - Inscribir alumno a una carrera
+- ✅ `sp_ObtenerCursadasAlumno` - Obtener materias que cursa un alumno
+- ✅ `sp_ListarAlumnos` - Listar alumnos con filtros
+- ✅ `sp_ObtenerAlumno` - Obtener datos de un alumno por ID
 
 ### 2. Gestión de Profesores
 
 - ✅ `sp_CrearProfesor` - Crear un nuevo profesor
+- ✅ `sp_ObtenerProfesor` - Obtener datos de un profesor por ID
+- ✅ `sp_ListarProfesores` - Listar profesores con filtros
 - ✅ `sp_AsignarProfesorAsignatura` - Asignar profesor a una asignatura
-- 🔲 `sp_ModificarProfesor` - Actualizar datos de un profesor
-- 🔲 `sp_EliminarProfesor` - Eliminar un profesor (baja lógica)
-- 🔲 `sp_ObtenerAsignaturasProfesor` - Obtener asignaturas de un profesor
+- ✅ `sp_ModificarProfesor` - Actualizar datos de un profesor
+- ✅ `sp_EliminarProfesor` - Eliminar un profesor (baja lógica)
+- ✅ `sp_ObtenerAsignaturasProfesor` - Obtener asignaturas de un profesor
 
 ### 3. Gestión de Asignaturas
 
 - ✅ `sp_CrearAsignatura` - Crear una nueva asignatura
 - ✅ `sp_ObtenerAsignatura` - Obtener datos de una asignatura por ID
-- 🔲 `sp_ModificarAsignatura` - Actualizar datos de una asignatura
-- 🔲 `sp_EliminarAsignatura` - Eliminar una asignatura
-- 🔲 `sp_AgregarCorrelativa` - Agregar correlativa a una asignatura
-- 🔲 `sp_AsignarAsignaturaAPlan` - Asignar asignatura a un plan de estudios
+- ✅ `sp_ModificarAsignatura` - Actualizar datos de una asignatura
+- ✅ `sp_EliminarAsignatura` - Eliminar una asignatura
+- ✅ `sp_AgregarCorrelativa` - Agregar correlativa a una asignatura
+- ✅ `sp_AsignarAsignaturaAPlan` - Asignar asignatura a un plan de estudios
+- ✅ `sp_ListarAsignaturas` - Listar asignaturas con filtros
 
 ### 4. Gestión de Carreras y Planes de Estudio
 
-- 🔲 `sp_CrearCarrera` - Crear una nueva carrera
+- ✅ `sp_CrearCarrera` - Crear una nueva carrera
+- ✅ `sp_ObtenerCarrera` - Obtener datos de una carrera por ID
 - 🔲 `sp_ModificarCarrera` - Actualizar datos de una carrera
-- 🔲 `sp_CrearPlanEstudio` - Crear un nuevo plan de estudios
+- 🔲 `sp_CrearPlanEstudio` - Crear un nuevo plan de estudio
+- 🔲 `sp_ObtenerPlanEstudio` - Obtener datos de un plan de estudio
 - 🔲 `sp_ObtenerAsignaturasPlan` - Obtener asignaturas de un plan
 
 ### 5. Gestión de Usuarios y Permisos
@@ -39,6 +46,7 @@
 - 🔲 `sp_AsignarRolUsuario` - Asignar rol a un usuario
 - 🔲 `sp_VerificarPermiso` - Verificar si un usuario tiene un permiso
 - 🔲 `sp_CambiarPassword` - Cambiar contraseña de usuario
+- 🔲 `sp_ListarUsuarios` - Listar usuarios con filtros
 
 ### 6. Gestión de Inscripciones y Cursadas
 

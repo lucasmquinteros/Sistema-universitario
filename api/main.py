@@ -11,15 +11,13 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from api.auth import Token, create_access_token, get_current_user, get_current_active_user
 from services.usuario_service import UsuarioService
+from db.manager import DatabaseManager
+from api.schemas import ProfesorCreate, ProfesorResponse, ProfesorList
+from utils.logger import Logger
 
 # Agregar directorio raíz al path para importaciones
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from db.manager import DatabaseManager
-from db.sqlalchemy_config import SQLAlchemyManager
-from services.profesor_sevices_hibrid import ProfesorServiceHybrid
-from api.schemas import ProfesorCreate, ProfesorResponse, ProfesorList
-from utils.logger import Logger
 
 # Inicializar FastAPI
 app = FastAPI(

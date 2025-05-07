@@ -70,31 +70,43 @@ class AsignaturaService(BaseService):
         except Exception as e:
             print(f"Error al obtener asignatura: {str(e)}")
             return None
+        
+    def modificar(self, nombre: Optional[str], )
     
     def agregar_correlativa(self, asignatura_id: int, correlativa_id: int) -> bool:
         try:
-            # Ejecutar consulta directa (o SP si se implementa)
-            query = """
-                INSERT INTO Correlativa (Id_asignatura, Id_Correlativa)
-                VALUES (?, ?)
-            """
-            self.db.execute_query(query, (asignatura_id, correlativa_id))
+            params = (asignatura_id, correlativa_id)
+            self.db.execute_stored_procedure("sp_AgregarCorrelativa", params)
             return True
             
         except Exception as e:
             print(f"Error al agregar correlativa: {str(e)}")
             return False
     
-    def asignar_a_plan(self, asignatura_id: int, plan_id: int, año: int, cuatrimestre: Optional[int] = None) -> bool:
+    def asignar_a_plan(self, asignatura_id: int, plan_id: int, cuatrimestre_id: int) -> bool:
         try:
-            # Ejecutar consulta directa (o SP si se implementa)
-            query = """
-                INSERT INTO AsignaturaxPlan (Id_Asignatura, Id_Plan, Año, Cuatrimestre)
-                VALUES (?, ?, ?, ?)
-            """
-            self.db.execute_query(query, (asignatura_id, plan_id, año, cuatrimestre))
+            params = (asignatura_id, plan_id, cuatrimestre_id)
+            self.db.execute_stored_procedure("sp_AsignarAsignaturaAPlan", params)
             return True
             
         except Exception as e:
             print(f"Error al asignar asignatura a plan: {str(e)}")
+            return False
+        
+    def eliminar_correlativa(self, asignatura_id: int, correlativa_id: int) -> bool:
+        try:
+            params = (asignatura_id, correlativa_id)
+            self.db.execute_stored_procedure("sp_EliminarCorrelativa", params)
+            return True
+        except Exception as e:
+            print(f"Error al eliminar correlativa: {str(e)}")
+            return False
+
+    def desasignar_de_plan(self, asignatura_id: int, plan_id: int) -> bool:
+        try:
+            params = (asignatura_id, plan_id)
+            self.db.execute_stored_procedure("sp_DesasignarAsignaturaDePlan", params)
+            return True
+        except Exception as e:
+            print(f"Error al desasignar asignatura de plan: {str(e)}")
             return False

@@ -9,7 +9,7 @@ from services.usuario_service import UsuarioService
 from db.manager import DatabaseManager
 
 # Configuración de JWT
-SECRET_KEY = "tu_clave_secreta_muy_segura_cambiame_en_produccion"
+SECRET_KEY = "palabra secreta!"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -24,7 +24,7 @@ class TokenData(BaseModel):
 # Dependencias
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None): 
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
