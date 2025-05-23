@@ -142,16 +142,17 @@ CREATE TABLE Profesor (
 );
 
 -- Crear tabla ProfesorxAsignatura (relación entre profesores y asignaturas)
-CREATE TABLE ProfesorxAsignatura (
-    Id_Profesor INTEGER NOT NULL,
-    Id_Asignatura INTEGER NOT NULL,
-    Rol VARCHAR(50) NOT NULL, -- Titular, Adjunto, JTP, Ayudante, etc.
-    AñoAcademico INTEGER NOT NULL,
-    Cuatrimestre INTEGER NOT NULL,
-    PRIMARY KEY (Id_Profesor, Id_Asignatura, AñoAcademico, Cuatrimestre),
-    FOREIGN KEY (Id_Profesor) REFERENCES Profesor(Id),
-    FOREIGN KEY (Id_Asignatura) REFERENCES Asignatura(Id)
-);
+Create table ProfesorxAsignatura (
+	Profesor_id int,
+	Asignatura_id int,
+	rol NVARCHAR(128),
+	Cuatrimestre_id int,
+	AñoAcademico datetime,
+	PRIMARY KEY (Profesor_id, Asignatura_id, AñoAcademico, Cuatrimestre_id),
+	Foreign Key (Profesor_id) REFERENCES profesor(id),
+	Foreign key (Asignatura_id) REFERENCES Asignatura(id),
+	Foreign key (cuatrimestre_id) REFERENCES Cuatrimestre(id)
+)
 
 -- Crear tabla Cursada (inscripción de alumnos a asignaturas)
 CREATE TABLE Cursada (

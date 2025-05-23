@@ -1,0 +1,19 @@
+2025-05-13 00:03:17,474 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-13 00:03:17,475 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-13 00:03:17,541 - sistema_universitario - INFO - Profesor creado con ID: [{'ProfesorId': Decimal('11')}]
+2025-05-13 00:03:17,545 - sistema_universitario - INFO - Profesor recuperado:  
+2025-05-13 00:03:17,551 - sistema_universitario - WARNING - No se pudo asignar el profesor a la asignatura
+2025-05-13 00:03:17,551 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-13 10:37:48,761 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-13 10:37:48,762 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-13 10:37:48,909 - sistema_universitario - INFO - Profesor creado con ID: None
+2025-05-13 10:37:48,912 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID 11
+2025-05-13 10:37:48,912 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-13 10:56:46,929 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-13 10:56:46,929 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-13 10:56:46,992 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID 10
+2025-05-13 10:56:46,992 - sistema_universitario - INFO - Finalizando aplicación
+2025-05-13 10:57:35,610 - sistema_universitario - INFO - Iniciando aplicación
+2025-05-13 10:57:35,610 - sistema_universitario - INFO - Conexión a base de datos establecida
+2025-05-13 10:57:35,668 - sistema_universitario - WARNING - No se pudo recuperar el profesor con ID 10
+2025-05-13 10:57:35,668 - sistema_universitario - INFO - Finalizando aplicación
